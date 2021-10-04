@@ -20,7 +20,7 @@ function Main(props) {
         .catch((err) => {
             console.error(err);
         })
-    })
+    }, []);
 
     React.useEffect(() => {
         api.getInitialCards()
@@ -42,15 +42,15 @@ function Main(props) {
 
 
     const onEditAvatar = () => {
-        props.onEditAvatar(props.onClick);
+        props.onEditAvatar();
     }
   
     const onEditProfile = () => {
-        props.onEditProfile(props.onClick);
+        props.onEditProfile();
     }
   
     const onAddPlace = () => {
-        props.onAddPlace(props.onClick);
+        props.onAddPlace();
     }
   
 
