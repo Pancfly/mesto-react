@@ -44,7 +44,7 @@ class Api {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-                avatar: data.link
+                avatar: data.avatar
             })
         })
         .then(this._getResponse);
@@ -62,14 +62,6 @@ class Api {
         .then(this._getResponse);
     }
 
-    putLike(id) {
-        return fetch(`${this._url}/cards/likes/${id}`, {
-            method: 'PUT',
-            headers: this._headers,
-        })
-        .then(this._getResponse);
-    }
-
     deleteCard(id) {
         return fetch(`${this._url}/cards/${id}`, {
             method: 'DELETE',
@@ -78,10 +70,10 @@ class Api {
         .then(this._getResponse);
     }
 
-    deleteLike(id) {
-        return fetch(`${this._url}/cards/likes/${id}`, {
-            method: 'DELETE',
-            headers: this._headers
+    changeLikeCardStatus(id, isLiked) {
+        return fetch (`${this.url}/cards/likes/${id}`, {
+            method: isLiked ? 'PUT' : 'DELETE',
+            headers: this._headers,
         })
         .then(this._getResponse);
     }
