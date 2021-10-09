@@ -43,6 +43,7 @@ code {
 @import url(./blocks/elements/__count/elements__count.css);
 @import url(./blocks/elements/__button/_like-active/elements__button_like-active.css);
 @import url(./blocks/elements/__button/_delete/elements__button_delete.css);
+@import url(./blocks/elements/__button/_delete-hidden/elements__button_delete-hidden.css);
 /*footer*/
 @import url(./blocks/footer/footer.css);
 @import url(./blocks/footer/__copyright/footer__copyright.css);

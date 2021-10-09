@@ -4,36 +4,36 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function EditProfilePopup(props) {
 
-  const [userName, setUserName] = React.useState('');
-  const [userDescription, setUserDescription] = React.useState('');
+  const [name, setName] = React.useState('');
+  const [description, setDescription] = React.useState('');
   const currentUser = React.useContext(CurrentUserContext);
 
   React.useEffect(() => {
-    setUserName(currentUser.name);
-    setUserDescription(currentUser.about);
+    setName(currentUser.name);
+    setDescription(currentUser.about);
 }, [currentUser]); 
 
   function handleSubmit(e) {
   e.preventDefault();
   props.onUpdateUser({
-    userName,
-    userAbout: userDescription,
+    name,
+    about: description,
   });
 }
   
   function handleChangeUserName(e) {
-    setUserName(e.target.value)
+    setName(e.target.value)
   }
 
   function handleChangeUserDescription(e) {
-    setUserDescription(e.target.value)
+    setDescription(e.target.value)
   }
 
   return (
-    <PopupWithForm onSubmit={handleSubmit} onClose={props.onClose} isOpen={props.isOpen} name="profile" title="Редактировать профиль" buttonText="Сохранить">
-      <input value={userName || ''} onChange={handleChangeUserName} id="profile-name" type="text" className="popup__text" name="name" placeholder="Имя" required minLength={2} maxLength={40} />
+    <PopupWithForm loadingButtonText="Сохранение..." isLoadingData={props.isLoadingData} onSubmit={handleSubmit} onClose={props.onClose} isOpen={props.isOpen} name="profile" title="Редактировать профиль" buttonText="Сохранить">
+      <input value={name || ''} onChange={handleChangeUserName} id="profile-name" type="text" className="popup__text" name="name" placeholder="Имя" required minLength={2} maxLength={40} />
       <span id="profile-name-error" className="popup__text-error" />
-      <input value={userDescription || ''} onChange={handleChangeUserDescription} id="profile-about" type="text" className="popup__text" name="about" placeholder="О себе" required minLength={2} maxLength={200} />
+      <input value={description || ''} onChange={handleChangeUserDescription} id="profile-about" type="text" className="popup__text" name="about" placeholder="О себе" required minLength={2} maxLength={200} />
       <span id="profile-about-error" className="popup__text-error" />
     </PopupWithForm>
   )

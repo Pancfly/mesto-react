@@ -9,7 +9,7 @@ function PopupWithForm(props) {
           <h3 className="popup__title">{props.title}</h3>
           <form onSubmit={props.onSubmit} className={`popup__input popup__input_type_${props.name}`} name={props.name} noValidate>
             {props.children}
-            <button type="submit" className="popup__button popup__button_submit">{props.buttonText}</button>
+            <button type="submit" className="popup__button popup__button_submit">{props.isLoadingData ? props.loadingButtonText : props.buttonText}</button>
           </form>
       </div>
     </div>
